@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Grades UI.unity
+    guid: 91e7ca6296ecb794cb2e88a51690a83e
+  - enabled: 1
+    path: Assets/Chat UI.unity
+    guid: ac4fb9d34caa1094d926e0dfdcfd9c40
+  - enabled: 1
+    path: Assets/Create Users UI.unity
+    guid: 16c94cb6407c0bf44bf112b78ec04d2e
