@@ -15,7 +15,7 @@ public class Database : MonoBehaviour {
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); // Open Conmnection to the database.
         IDbCommand dbcmd = dbconn.CreateCommand();
-        string sqlQuery = "SELECT * " + "FROM Userinfo"; // Table name
+        string sqlQuery = "SELECT * " + "FROM USERINFO"; // Table name
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
         while (reader.Read())
