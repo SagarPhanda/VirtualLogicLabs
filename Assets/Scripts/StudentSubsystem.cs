@@ -52,6 +52,7 @@ public class StudentSubsystem : MonoBehaviour {
     private void EnterCamera()
     {
         Debug.Log("Camera Button Clicked");
+        SceneManager.LoadScene("Scenes/Camera");
     }
 
     private void EnterChat()

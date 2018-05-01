@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DataInsert : MonoBehaviour {
     public static string inputStudent;
     public static string inputPassword;
@@ -12,13 +13,14 @@ public class DataInsert : MonoBehaviour {
     public static double lab2avg;
     public string[] students;
     WWW studentData;
-
+    public string gradeOwner;
     string CreateUserURL = "http://ec2-18-204-3-220.compute-1.amazonaws.com/ReadData.php";
-
+    StudentInfo currStudent;
     // Use this for initialization
     void Start()
     {
         StartCoroutine(GetData());
+   
     }
 
 
@@ -42,9 +44,10 @@ public class DataInsert : MonoBehaviour {
         students = studentDataString.Split(';');
         lab1avg = getlab1Avg();
         lab2avg = getlab2avg();
+        yield break;
     }
 
-    string GetDataValue(string data, string index)
+    public string GetDataValue(string data, string index)
     {
         string value = data.Substring(data.IndexOf(index) + index.Length);
         if (value.Contains("|"))
@@ -148,7 +151,7 @@ public class DataInsert : MonoBehaviour {
         return finalGrade;
     }
 
-    string GetStudentPassword(string name)
+    public string GetStudentPassword(string name)
     {
         string password = "";
 
@@ -162,9 +165,14 @@ public class DataInsert : MonoBehaviour {
                 break;
             }
         }
-        Debug.Log("Setting current user password to: " + password);
         return password;
     }
+
+    public void setGradeOwner(string owner)
+    {
+        this.gradeOwner = owner;
+    }
+    
 
     public void PrintToCSVFormat()
     {

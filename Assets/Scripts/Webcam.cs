@@ -18,13 +18,6 @@ public class Webcam : MonoBehaviour
         Texture2D snap = new Texture2D(tex.width, tex.height);
         snap.SetPixels(tex.GetPixels());
         snap.Apply();
-
-        // saving to C:/WebcamSnaps/ 
-        // to change path change the string _SavePath
-        if (!Directory.Exists(_SavePath))
-        {
-            Directory.CreateDirectory(_SavePath);
-        }
         System.IO.File.WriteAllBytes(_SavePath + _CaptureCounter.ToString() + ".png", snap.EncodeToPNG());
         Debug.Log(" Saved to " + _SavePath + _CaptureCounter.ToString() + ".png");
         ++_CaptureCounter;
@@ -36,6 +29,11 @@ public class Webcam : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _SavePath = Directory.GetCurrentDirectory() + "/WebcamSnaps/";
+        if (!Directory.Exists(_SavePath))
+        {
+            Directory.CreateDirectory(_SavePath);
+        }
         if (tex != null)
         {
             display.texture = null;
@@ -48,7 +46,6 @@ public class Webcam : MonoBehaviour
             WebCamDevice device = WebCamTexture.devices[currentCamIndex];
             tex = new WebCamTexture(device.name);
             display.texture = tex;
-
             tex.Play();
         }
     }
